@@ -1,1 +1,1 @@
-print("¡Hola!\nTE AMITO<3")
+print("TE AMITO<3")
