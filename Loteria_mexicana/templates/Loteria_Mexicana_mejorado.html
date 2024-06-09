@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loteria Mexicana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div>
+        <h1>Loteria Mexicana</h1>
+        {% if columna%3 == 0 %}
+            <table>
+                {% set colores = ["rosa", "azul", "amarillo"] %}
+                {% set ns = namespace(inicio = 0) %}
+                
+                {% for i in range (fila)%}
+                    {% set ns2 = namespace(posicion = ns.inicio) %}
+                    <tr>
+                        {% for x in range(columna) %}
+                            <td class= {{colores[ns2.posicion]}}></td>
+                            {% set ns2.posicion = ns2.posicion + 1 %}
+                            {% if ns2.posicion == 3 %}
+                                {% set ns2.posicion = 0 %}
+                            {% endif %}
+                        {% endfor%}
+                    </tr>
+                    {% set ns.inicio = ns.inicio + 1 %}
+
+                    {% if ns.inicio == 3 %}
+                        {% set ns.inicio = 0 %}
+                    {% endif %}
+                {% endfor%}
+            </table>
+
+        {% else %}
+
+        {% endif %}
+    </div>
+
+</body>
+</html>

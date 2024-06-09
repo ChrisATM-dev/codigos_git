@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loteria Mexicana</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div>
+        <h1>Loteria Mexicana</h1>
+        <table>
+            {% set colores = ["rosa", "azul", "amarillo"] %}
+            {% set contador = namespace(counter = 0) %}
+            
+            {% for i in range (numero)%}
+            <tr>
+                {% for x in range(4) %}
+                    <td class= {{colores[contador.counter]}}></td>
+                    {% set contador.counter = contador.counter + 1 %}
+                    {% if contador.counter == 3 %}
+                        {% set contador.counter = 0 %} 
+                    {% endif %}
+                {% endfor%}
+            </tr>
+            {% endfor%}
+        </table>
+    </div>
+
+</body>
+</html>
